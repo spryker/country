@@ -5,7 +5,7 @@
 
 namespace SprykerFeature\Zed\Country\Persistence\Propel;
 
-use SprykerFeature\Zed\Country\Persistence\Propel\Base\SpyRegion as BaseSpyRegion;
+use Orm\Zed\Country\Persistence\Base\SpyRegion as BaseSpyRegion;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_region' table.
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Country\Persistence\Propel\Base\SpyRegion as BaseSpyRegio
  * long as it does not already exist in the output directory.
  *
  */
-class SpyRegion extends BaseSpyRegion
+abstract class AbstractSpyRegion extends BaseSpyRegion
 {
 
 }
