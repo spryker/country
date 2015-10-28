@@ -5,10 +5,10 @@
 
 namespace SprykerFeature\Zed\Country\Persistence\Propel;
 
-use SprykerFeature\Zed\Country\Persistence\Propel\Base\SpyCountry as BaseSpyCountry;
+use Orm\Zed\Country\Persistence\Base\SpyCountryQuery as BaseSpyCountryQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_country' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_country' table.
  *
  *
  *
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Country\Persistence\Propel\Base\SpyCountry as BaseSpyCoun
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCountry extends BaseSpyCountry
+abstract class AbstractSpyCountryQuery extends BaseSpyCountryQuery
 {
 
-}
+} // SpyCountryQuery
