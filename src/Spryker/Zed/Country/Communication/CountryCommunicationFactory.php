@@ -13,7 +13,7 @@ use Spryker\Zed\Country\CountryDependencyProvider;
 use Spryker\Zed\Country\Communication\Table\CountryTable;
 use Spryker\Zed\User\Persistence\UserQueryContainer;
 
-class CountryDependencyContainer extends AbstractCommunicationFactory
+class CountryCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

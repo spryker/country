@@ -18,7 +18,7 @@ use Spryker\Zed\Country\Persistence\CountryQueryContainer;
  * @method CountryConfig getConfig()
  * @method CountryQueryContainer getQueryContainer()
  */
-class CountryDependencyContainer extends AbstractBusinessFactory
+class CountryBusinessFactory extends AbstractBusinessFactory
 {
 
     /**
