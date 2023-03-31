@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Country\Business\Cldr;
+namespace Spryker\Zed\Country\Dependency\Facade;
 
-interface CldrDataProviderInterface
+interface CountryToStoreFacadeInterface
 {
     /**
-     * @return array<mixed>
+     * @return bool
      */
-    public function getCldrData(): array;
+    public function isDynamicStoreEnabled(): bool;
 }

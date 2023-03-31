@@ -17,7 +17,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  * @method \Spryker\Zed\Country\CountryConfig getConfig()
  * @method \Spryker\Zed\Country\Communication\CountryCommunicationFactory getFactory()
  */
-class CountryAclEntityConfigurationExpanderPlugin extends AbstractPlugin implements AclEntityConfigurationExpanderPluginInterface
+class CountryStoreAclEntityConfigurationExpanderPlugin extends AbstractPlugin implements AclEntityConfigurationExpanderPluginInterface
 {
     /**
      * @uses {@link \Spryker\Shared\AclEntity\AclEntityConstants::OPERATION_MASK_READ}
@@ -28,7 +28,7 @@ class CountryAclEntityConfigurationExpanderPlugin extends AbstractPlugin impleme
 
     /**
      * {@inheritDoc}
-     * - Expands provided `AclEntityMetadataConfig` transfer object with country composite data.
+     * - Expands provided `AclEntityMetadataConfig` transfer object with country store composite data.
      *
      * @api
      *
@@ -41,9 +41,9 @@ class CountryAclEntityConfigurationExpanderPlugin extends AbstractPlugin impleme
         $aclEntityMetadataConfigTransfer
             ->getAclEntityMetadataCollectionOrFail()
             ->addAclEntityMetadata(
-                'Orm\Zed\Country\Persistence\SpyCountry',
+                'Orm\Zed\Country\Persistence\SpyCountryStore',
                 (new AclEntityMetadataTransfer())
-                    ->setEntityName('Orm\Zed\Country\Persistence\SpyCountry')
+                    ->setEntityName('Orm\Zed\Country\Persistence\SpyCountryStore')
                     ->setDefaultGlobalOperationMask(static::OPERATION_MASK_READ),
             );
 
