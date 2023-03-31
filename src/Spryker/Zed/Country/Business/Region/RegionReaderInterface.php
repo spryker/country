@@ -5,16 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Country\Business;
+namespace Spryker\Zed\Country\Business\Region;
 
-interface RegionManagerInterface
+interface RegionReaderInterface
 {
     /**
      * @param string $isoCode
-     * @param int $fkCountry
-     * @param string $regionName
      *
-     * @return int
+     * @return bool
      */
-    public function createRegion($isoCode, $fkCountry, $regionName);
+    public function regionExists(string $isoCode): bool;
 }
