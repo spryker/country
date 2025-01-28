@@ -19,9 +19,6 @@ class CountryConfig extends AbstractBundleConfig
     public function getTerritoriesBlacklist(): array
     {
         return [
-            'EU', // Europe
-            'QO', // Outlying Oceania
-            'ZZ', // undefined
         ];
     }
 
