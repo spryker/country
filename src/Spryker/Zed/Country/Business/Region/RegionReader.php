@@ -16,19 +16,11 @@ class RegionReader implements RegionReaderInterface
      */
     protected $repository;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryRepositoryInterface $repository
-     */
     public function __construct(CountryRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param string $isoCode
-     *
-     * @return bool
-     */
     public function regionExists(string $isoCode): bool
     {
         return $this->repository->getRegionsCountByIso2Code($isoCode) > 0;

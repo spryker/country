@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CountryCollectionTransfer;
 
 interface RegionExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function expandCountryCollectionWithRegions(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer;
 }

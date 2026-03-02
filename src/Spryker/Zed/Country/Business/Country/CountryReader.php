@@ -26,10 +26,6 @@ class CountryReader implements CountryReaderInterface
      */
     protected RegionExpanderInterface $regionExpander;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryRepositoryInterface $countryRepository
-     * @param \Spryker\Zed\Country\Business\Expander\RegionExpanderInterface $regionExpander
-     */
     public function __construct(
         CountryRepositoryInterface $countryRepository,
         RegionExpanderInterface $regionExpander
@@ -38,11 +34,6 @@ class CountryReader implements CountryReaderInterface
         $this->regionExpander = $regionExpander;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountriesByIso2CodesFromCountryCollection(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer
     {
         $iso2Codes = [];
@@ -99,21 +90,11 @@ class CountryReader implements CountryReaderInterface
         return $countryTransfer;
     }
 
-    /**
-     * @param string $iso2code
-     *
-     * @return bool
-     */
     public function countryExists(string $iso2code): bool
     {
         return $this->countryRepository->countCountriesByIso2Code($iso2code) > 0;
     }
 
-    /**
-     * @param string $countryName
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function getPreferredCountryByName(string $countryName): CountryTransfer
     {
         $countryTransfer = $this->countryRepository->findCountryByName($countryName);
@@ -121,11 +102,6 @@ class CountryReader implements CountryReaderInterface
         return $countryTransfer ?? new CountryTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCriteriaTransfer $countryCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountryCollection(
         CountryCriteriaTransfer $countryCriteriaTransfer
     ): CountryCollectionTransfer {

@@ -35,11 +35,6 @@ class CountryEntityManager extends AbstractEntityManager implements CountryEntit
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function createCountry(CountryTransfer $countryTransfer): CountryTransfer
     {
         $countryMapper = $this->getFactory()->createCountryMapper();
@@ -51,11 +46,6 @@ class CountryEntityManager extends AbstractEntityManager implements CountryEntit
         return $countryMapper->mapCountryEntityToCountryTransfer($countryEntity, $countryTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RegionTransfer $regionTransfer
-     *
-     * @return \Generated\Shared\Transfer\RegionTransfer
-     */
     public function createRegion(RegionTransfer $regionTransfer): RegionTransfer
     {
         $countryMapper = $this->getFactory()->createCountryMapper();

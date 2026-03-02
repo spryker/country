@@ -23,10 +23,6 @@ class RegionWriter implements RegionWriterInterface
      */
     protected $regionReader;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\Country\Business\Region\RegionReaderInterface $regionReader
-     */
     public function __construct(
         CountryEntityManagerInterface $entityManager,
         RegionReaderInterface $regionReader
@@ -35,13 +31,6 @@ class RegionWriter implements RegionWriterInterface
         $this->regionReader = $regionReader;
     }
 
-    /**
-     * @param string $isoCode
-     * @param int $fkCountry
-     * @param string $regionName
-     *
-     * @return \Generated\Shared\Transfer\RegionTransfer
-     */
     public function createRegion(string $isoCode, int $fkCountry, string $regionName): RegionTransfer
     {
         $this->assertRegionDoesNotExist($isoCode);

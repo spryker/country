@@ -38,51 +38,18 @@ interface CountryRepositoryInterface
      */
     public function getCountryDataGroupedByIdStore(array $storeIds): array;
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return int
-     */
     public function countCountriesByIso2Code(string $iso2Code): int;
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return int
-     */
     public function getRegionsCountByIso2Code(string $iso2Code): int;
 
-    /**
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getAvailableCountries(): CountryCollectionTransfer;
 
-    /**
-     * @param string $countryName
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByName(string $countryName): ?CountryTransfer;
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByIso2Code(string $iso2Code): ?CountryTransfer;
 
-    /**
-     * @param string $iso3Code
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByIso3Code(string $iso3Code): ?CountryTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCriteriaTransfer $countryCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountryCollection(
         CountryCriteriaTransfer $countryCriteriaTransfer
     ): CountryCollectionTransfer;

@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
  */
 class GatewayController extends AbstractGatewayController
 {
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function findCountriesByIso2CodesAction(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer
     {
         return $this->getFacade()->findCountriesByIso2Codes($countryCollectionTransfer);

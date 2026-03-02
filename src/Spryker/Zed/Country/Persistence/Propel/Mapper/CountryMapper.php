@@ -35,12 +35,6 @@ class CountryMapper
         return $regionTransfersGroupedByIdCountry;
     }
 
-    /**
-     * @param \Orm\Zed\Country\Persistence\SpyRegion $regionEntity
-     * @param \Generated\Shared\Transfer\RegionTransfer $regionTransfer
-     *
-     * @return \Generated\Shared\Transfer\RegionTransfer
-     */
     public function mapRegionEntityToRegionTransfer(SpyRegion $regionEntity, RegionTransfer $regionTransfer): RegionTransfer
     {
         return $regionTransfer->fromArray($regionEntity->toArray(), true);
@@ -66,12 +60,6 @@ class CountryMapper
         return $countryCollectionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Country\Persistence\SpyCountry $countryEntity
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function mapCountryTransfer(SpyCountry $countryEntity, CountryTransfer $countryTransfer): CountryTransfer
     {
         $countryTransfer = $countryTransfer
@@ -86,12 +74,6 @@ class CountryMapper
         return $countryTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     * @param \Orm\Zed\Country\Persistence\SpyCountry $countryEntity
-     *
-     * @return \Orm\Zed\Country\Persistence\SpyCountry
-     */
     public function mapCountryTransferToCountryEntity(CountryTransfer $countryTransfer, SpyCountry $countryEntity): SpyCountry
     {
         return $countryEntity->setName($countryTransfer->getNameOrFail())
@@ -101,23 +83,11 @@ class CountryMapper
             ->setIso3Code($countryTransfer->getIso3CodeOrFail());
     }
 
-    /**
-     * @param \Orm\Zed\Country\Persistence\SpyCountry $countryEntity
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function mapCountryEntityToCountryTransfer(SpyCountry $countryEntity, CountryTransfer $countryTransfer): CountryTransfer
     {
         return $countryTransfer->fromArray($countryEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RegionTransfer $regionTransfer
-     * @param \Orm\Zed\Country\Persistence\SpyRegion $regionEntity
-     *
-     * @return \Orm\Zed\Country\Persistence\SpyRegion
-     */
     public function mapRegionTransferToRegionEntity(RegionTransfer $regionTransfer, SpyRegion $regionEntity): SpyRegion
     {
         return $regionEntity

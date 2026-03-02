@@ -34,9 +34,6 @@ class GermanyRegionInstaller implements RegionInstallInterface
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getCountryIso(): string
     {
         return 'DE';

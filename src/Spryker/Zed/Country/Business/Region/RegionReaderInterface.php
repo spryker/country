@@ -9,10 +9,5 @@ namespace Spryker\Zed\Country\Business\Region;
 
 interface RegionReaderInterface
 {
-    /**
-     * @param string $isoCode
-     *
-     * @return bool
-     */
     public function regionExists(string $isoCode): bool;
 }

@@ -26,9 +26,6 @@ class StoreExpander implements StoreExpanderInterface
      */
     protected CountryRepositoryInterface $countryRepository;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryRepositoryInterface $countryRepository
-     */
     public function __construct(
         CountryRepositoryInterface $countryRepository
     ) {

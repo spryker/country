@@ -36,9 +36,6 @@ class CountryPersistenceFactory extends AbstractPersistenceFactory
         return SpyRegionQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Persistence\Propel\Mapper\CountryMapper
-     */
     public function createCountryMapper(): CountryMapper
     {
         return new CountryMapper();

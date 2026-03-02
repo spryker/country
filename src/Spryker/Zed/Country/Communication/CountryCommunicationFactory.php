@@ -19,9 +19,6 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
  */
 class CountryCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\Country\Communication\Table\CountryTable
-     */
     public function createCountryTable(): CountryTable
     {
         return new CountryTable(

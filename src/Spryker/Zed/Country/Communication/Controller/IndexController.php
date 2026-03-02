@@ -29,9 +29,6 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $table = $this->getFactory()->createCountryTable();

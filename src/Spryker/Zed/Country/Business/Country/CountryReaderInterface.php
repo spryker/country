@@ -13,11 +13,6 @@ use Generated\Shared\Transfer\CountryTransfer;
 
 interface CountryReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountriesByIso2CodesFromCountryCollection(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer;
 
     /**
@@ -45,25 +40,10 @@ interface CountryReaderInterface
      */
     public function getCountryByIso3Code(string $iso3code): CountryTransfer;
 
-    /**
-     * @param string $iso2code
-     *
-     * @return bool
-     */
     public function countryExists(string $iso2code): bool;
 
-    /**
-     * @param string $countryName
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function getPreferredCountryByName(string $countryName): CountryTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCriteriaTransfer $countryCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountryCollection(
         CountryCriteriaTransfer $countryCriteriaTransfer
     ): CountryCollectionTransfer;

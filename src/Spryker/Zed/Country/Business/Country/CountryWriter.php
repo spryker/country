@@ -25,10 +25,6 @@ class CountryWriter implements CountryWriterInterface
      */
     protected CountryReaderInterface $countryReader;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\Country\Business\Country\CountryReaderInterface $countryReader
-     */
     public function __construct(
         CountryEntityManagerInterface $entityManager,
         CountryReaderInterface $countryReader
@@ -37,11 +33,6 @@ class CountryWriter implements CountryWriterInterface
         $this->countryReader = $countryReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function createCountry(CountryTransfer $countryTransfer): CountryTransfer
     {
         $this->assertCountryDoesNotExist($countryTransfer->getIso2CodeOrFail());
@@ -49,11 +40,6 @@ class CountryWriter implements CountryWriterInterface
         return $this->entityManager->createCountry($countryTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreCountries(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         $countryCollectionTransfer = $this->countryReader->getCountriesByIso2Codes($storeTransfer->getCountries());
@@ -69,11 +55,6 @@ class CountryWriter implements CountryWriterInterface
         return $this->getSuccessfulResponse($storeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     protected function getSuccessfulResponse(StoreTransfer $storeTransfer): StoreResponseTransfer
     {
         return (new StoreResponseTransfer())

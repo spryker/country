@@ -93,11 +93,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
         return $countryCodesByStoreId;
     }
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return int
-     */
     public function countCountriesByIso2Code(string $iso2Code): int
     {
         return $this->getFactory()
@@ -106,11 +101,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->count();
     }
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return int
-     */
     public function getRegionsCountByIso2Code(string $iso2Code): int
     {
         return $this->getFactory()
@@ -119,9 +109,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->count();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getAvailableCountries(): CountryCollectionTransfer
     {
         $countryEntities = $this->getFactory()
@@ -134,11 +121,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->mapCountryTransferCollection($countryEntities, new CountryCollectionTransfer());
     }
 
-    /**
-     * @param string $countryName
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByName(string $countryName): ?CountryTransfer
     {
         $countryEntity = $this->getFactory()
@@ -155,11 +137,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->mapCountryTransfer($countryEntity, new CountryTransfer());
     }
 
-    /**
-     * @param string $iso2Code
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByIso2Code(string $iso2Code): ?CountryTransfer
     {
         $countryEntity = $this
@@ -177,11 +154,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->mapCountryTransfer($countryEntity, new CountryTransfer());
     }
 
-    /**
-     * @param string $iso3Code
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer|null
-     */
     public function findCountryByIso3Code(string $iso3Code): ?CountryTransfer
     {
         $countryEntity = $this
@@ -199,11 +171,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->mapCountryTransfer($countryEntity, new CountryTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCriteriaTransfer $countryCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getCountryCollection(
         CountryCriteriaTransfer $countryCriteriaTransfer
     ): CountryCollectionTransfer {
@@ -236,12 +203,6 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
             ->mapRegionEntitiesToRegionTransfersGroupedByIdCountry($regionEntities);
     }
 
-    /**
-     * @param \Orm\Zed\Country\Persistence\SpyCountryQuery $countryQuery
-     * @param \Generated\Shared\Transfer\CountryCriteriaTransfer $countryCriteriaTransfer
-     *
-     * @return \Orm\Zed\Country\Persistence\SpyCountryQuery
-     */
     protected function applyCountryFilters(
         SpyCountryQuery $countryQuery,
         CountryCriteriaTransfer $countryCriteriaTransfer

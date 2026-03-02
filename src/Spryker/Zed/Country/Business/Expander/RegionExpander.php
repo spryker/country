@@ -18,19 +18,11 @@ class RegionExpander implements RegionExpanderInterface
      */
     protected CountryRepositoryInterface $countryRepository;
 
-    /**
-     * @param \Spryker\Zed\Country\Persistence\CountryRepositoryInterface $countryRepository
-     */
     public function __construct(CountryRepositoryInterface $countryRepository)
     {
         $this->countryRepository = $countryRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function expandCountryCollectionWithRegions(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer
     {
         $countryIds = $this->extractCountryIdsFromCountryTransfers(

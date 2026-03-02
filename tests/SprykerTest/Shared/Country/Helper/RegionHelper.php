@@ -39,11 +39,6 @@ class RegionHelper extends Module
         return $regionTransfer->fromArray($regionEntity->toArray(), true);
     }
 
-    /**
-     * @param int $idRegion
-     *
-     * @return void
-     */
     protected function deleteRegion(int $idRegion): void
     {
         $regionEntity = $this->getRegionQuery()->findOneByIdRegion($idRegion);
@@ -53,9 +48,6 @@ class RegionHelper extends Module
         }
     }
 
-    /**
-     * @return \Orm\Zed\Country\Persistence\SpyRegionQuery
-     */
     protected function getRegionQuery(): SpyRegionQuery
     {
         return SpyRegionQuery::create();

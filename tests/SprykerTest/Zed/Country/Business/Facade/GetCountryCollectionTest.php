@@ -52,9 +52,6 @@ class GetCountryCollectionTest extends Unit
      */
     protected CountryBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testReturnsCountriesByIso2Codes(): void
     {
         // Arrange
@@ -81,9 +78,6 @@ class GetCountryCollectionTest extends Unit
         $this->assertCount(0, $retrievedCountryTransfer->getRegions());
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsCountriesWithRegions(): void
     {
         // Arrange

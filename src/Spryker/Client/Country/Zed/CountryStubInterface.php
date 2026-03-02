@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CountryCollectionTransfer;
 
 interface CountryStubInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function findCountriesByIso2Codes(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer;
 }

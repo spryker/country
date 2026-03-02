@@ -34,9 +34,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class CountryBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Country\Business\Internal\InstallInterface
-     */
     public function createInstaller(): InstallInterface
     {
         return new Install(
@@ -57,9 +54,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Country\CountryReaderInterface
-     */
     public function createCountryReader(): CountryReaderInterface
     {
         return new CountryReader(
@@ -68,17 +62,11 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Expander\RegionExpanderInterface
-     */
     public function createRegionExpander(): RegionExpanderInterface
     {
         return new RegionExpander($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Country\CountryWriterInterface
-     */
     public function createCountryWriter(): CountryWriterInterface
     {
         return new CountryWriter(
@@ -87,9 +75,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Region\RegionReaderInterface
-     */
     public function createRegionReader(): RegionReaderInterface
     {
         return new RegionReader(
@@ -97,9 +82,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Region\RegionWriterInterface
-     */
     public function createRegionWriter(): RegionWriterInterface
     {
         return new RegionWriter(
@@ -108,9 +90,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Validator\CountryCheckoutDataValidatorInterface
-     */
     public function createCountryCheckoutDataValidator(): CountryCheckoutDataValidatorInterface
     {
         return new CountryCheckoutDataValidator(
@@ -119,11 +98,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @param string $filePath
-     *
-     * @return \Spryker\Zed\Country\Business\Cldr\CldrDataProviderInterface
-     */
     public function createCldrDataProvider(string $filePath): CldrDataProviderInterface
     {
         return new JsonFileCldrDataProvider(
@@ -131,9 +105,6 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Country\Business\Expander\StoreExpanderInterface
-     */
     public function createStoreExpander(): StoreExpanderInterface
     {
         return new StoreExpander($this->getRepository());

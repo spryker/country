@@ -45,10 +45,6 @@ class CountryCheckoutDataValidator implements CountryCheckoutDataValidatorInterf
      */
     protected $countryRepository;
 
-    /**
-     * @param \Spryker\Zed\Country\Business\Country\CountryReaderInterface $countryReader
-     * @param \Spryker\Zed\Country\Persistence\CountryRepositoryInterface $countryRepository
-     */
     public function __construct(
         CountryReaderInterface $countryReader,
         CountryRepositoryInterface $countryRepository
@@ -76,11 +72,6 @@ class CountryCheckoutDataValidator implements CountryCheckoutDataValidatorInterf
         return $this->validateCountriesInShipments($checkoutDataTransfer, $checkoutResponseTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutDataTransfer $checkoutDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
-     */
     public function validateCountriesInCheckoutData(CheckoutDataTransfer $checkoutDataTransfer): CheckoutResponseTransfer
     {
         $checkoutResponseTransfer = (new CheckoutResponseTransfer())->setIsSuccess(true);
@@ -125,12 +116,6 @@ class CountryCheckoutDataValidator implements CountryCheckoutDataValidatorInterf
         return $checkoutResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutDataTransfer $checkoutDataTransfer
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
-     */
     protected function validateCountriesInShipments(
         CheckoutDataTransfer $checkoutDataTransfer,
         CheckoutResponseTransfer $checkoutResponseTransfer
@@ -213,12 +198,6 @@ class CountryCheckoutDataValidator implements CountryCheckoutDataValidatorInterf
                 ->setMessage($message));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutDataTransfer $checkoutDataTransfer
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
-     */
     protected function checkCountryInBillingAddress(
         CheckoutDataTransfer $checkoutDataTransfer,
         CheckoutResponseTransfer $checkoutResponseTransfer

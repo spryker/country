@@ -16,9 +16,6 @@ class JsonFileCldrDataProvider implements CldrDataProviderInterface
      */
     protected $cldrFilePath;
 
-    /**
-     * @param string $cldrFilePath
-     */
     public function __construct(string $cldrFilePath)
     {
         $this->cldrFilePath = $cldrFilePath;

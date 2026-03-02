@@ -13,17 +13,7 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface CountryWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CountryTransfer $countryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryTransfer
-     */
     public function createCountry(CountryTransfer $countryTransfer): CountryTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreResponseTransfer
-     */
     public function updateStoreCountries(StoreTransfer $storeTransfer): StoreResponseTransfer;
 }

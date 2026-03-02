@@ -17,19 +17,11 @@ class CountryStub implements CountryStubInterface
      */
     protected $zedRequestClient;
 
-    /**
-     * @param \Spryker\Client\Country\Dependency\Client\CountryToZedRequestClientInterface $zedRequestClient
-     */
     public function __construct(CountryToZedRequestClientInterface $zedRequestClient)
     {
         $this->zedRequestClient = $zedRequestClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function findCountriesByIso2Codes(CountryCollectionTransfer $countryCollectionTransfer): CountryCollectionTransfer
     {
         /** @var \Generated\Shared\Transfer\CountryCollectionTransfer $countryCollectionTransfer */
