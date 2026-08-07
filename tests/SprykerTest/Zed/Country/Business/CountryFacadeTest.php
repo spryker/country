@@ -163,6 +163,34 @@ class CountryFacadeTest extends Unit
         $this->assertSame('TS', $countryTransfer->getCountries()[0]->getRegions()[0]->getIso2Code());
     }
 
+    public function testGetAvailableCountriesReturnsCountriesWithRegions(): void
+    {
+        $country = new SpyCountry();
+        $country->setIso2Code(static::ISO2_CODE);
+        $country->save();
+
+        $region = new SpyRegion();
+        $region->setName('test');
+        $region->setFkCountry($country->getIdCountry());
+        $region->setIso2Code('TS');
+        $region->save();
+
+        $countryCollectionTransfer = $this->countryFacade->getAvailableCountries();
+
+        $regionIso2Codes = [];
+        foreach ($countryCollectionTransfer->getCountries() as $countryTransfer) {
+            if ($countryTransfer->getIso2Code() !== static::ISO2_CODE) {
+                continue;
+            }
+
+            foreach ($countryTransfer->getRegions() as $regionTransfer) {
+                $regionIso2Codes[] = $regionTransfer->getIso2Code();
+            }
+        }
+
+        $this->assertSame(['TS'], $regionIso2Codes);
+    }
+
     public function testCountryFacadeWillValidateCountryCheckoutWithoutErrors(): void
     {
         $checkoutDataTransfer = $this->prepareCheckoutDataTransferWithIso2Codes();

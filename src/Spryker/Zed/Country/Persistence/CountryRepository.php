@@ -113,6 +113,7 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
     {
         $countryEntities = $this->getFactory()
             ->createCountryQuery()
+            ->joinWithSpyRegion(Criteria::LEFT_JOIN)
             ->orderByName()
             ->find();
 
