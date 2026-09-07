@@ -12,6 +12,8 @@ use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryCriteriaTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
+use Generated\Shared\Transfer\RegionCollectionTransfer;
+use Generated\Shared\Transfer\RegionCriteriaTransfer;
 use Generated\Shared\Transfer\StoreResponseTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -199,5 +201,21 @@ class CountryFacade extends AbstractFacade implements CountryFacadeInterface
         return $this->getFactory()
             ->createCountryReader()
             ->getCountryCollection($countryCriteriaTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\RegionCriteriaTransfer $regionCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\RegionCollectionTransfer
+     */
+    public function getRegionCollection(RegionCriteriaTransfer $regionCriteriaTransfer): RegionCollectionTransfer
+    {
+        return $this->getFactory()
+            ->createRegionReader()
+            ->getRegionCollection($regionCriteriaTransfer);
     }
 }

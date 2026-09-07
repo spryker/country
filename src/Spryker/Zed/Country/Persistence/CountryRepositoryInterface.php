@@ -10,6 +10,8 @@ namespace Spryker\Zed\Country\Persistence;
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryCriteriaTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
+use Generated\Shared\Transfer\RegionCollectionTransfer;
+use Generated\Shared\Transfer\RegionCriteriaTransfer;
 
 interface CountryRepositoryInterface
 {
@@ -45,6 +47,8 @@ interface CountryRepositoryInterface
     public function getAvailableCountries(): CountryCollectionTransfer;
 
     public function findCountryByName(string $countryName): ?CountryTransfer;
+
+    public function getRegionCollection(RegionCriteriaTransfer $regionCriteriaTransfer): RegionCollectionTransfer;
 
     public function findCountryByIso2Code(string $iso2Code): ?CountryTransfer;
 

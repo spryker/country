@@ -12,6 +12,8 @@ use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryCriteriaTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
+use Generated\Shared\Transfer\RegionCollectionTransfer;
+use Generated\Shared\Transfer\RegionCriteriaTransfer;
 use Generated\Shared\Transfer\StoreResponseTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 
@@ -169,4 +171,20 @@ interface CountryFacadeInterface
     public function getCountryCollection(
         CountryCriteriaTransfer $countryCriteriaTransfer
     ): CountryCollectionTransfer;
+
+    /**
+     * Specification:
+     * - Retrieves region entities filtered by criteria from Persistence.
+     * - Uses `RegionCriteriaTransfer.regionConditions.iso2Codes` to filter by region ISO 3166-2 subdivision codes.
+     * - A subdivision code is unique across every country, so it identifies a region on its own; the caller
+     *   that needs the region to belong to a given country compares `RegionTransfer.fkCountry` itself.
+     * - Returns `RegionCollectionTransfer` filled with found regions.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\RegionCriteriaTransfer $regionCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\RegionCollectionTransfer
+     */
+    public function getRegionCollection(RegionCriteriaTransfer $regionCriteriaTransfer): RegionCollectionTransfer;
 }

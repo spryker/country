@@ -9,6 +9,7 @@ namespace Spryker\Zed\Country\Persistence\Propel\Mapper;
 
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
+use Generated\Shared\Transfer\RegionCollectionTransfer;
 use Generated\Shared\Transfer\RegionTransfer;
 use Orm\Zed\Country\Persistence\SpyCountry;
 use Orm\Zed\Country\Persistence\SpyRegion;
@@ -38,6 +39,22 @@ class CountryMapper
     public function mapRegionEntityToRegionTransfer(SpyRegion $regionEntity, RegionTransfer $regionTransfer): RegionTransfer
     {
         return $regionTransfer->fromArray($regionEntity->toArray(), true);
+    }
+
+    /**
+     * @param iterable<\Orm\Zed\Country\Persistence\SpyRegion> $regionEntities
+     */
+    public function mapRegionEntitiesToRegionCollectionTransfer(
+        iterable $regionEntities,
+        RegionCollectionTransfer $regionCollectionTransfer
+    ): RegionCollectionTransfer {
+        foreach ($regionEntities as $regionEntity) {
+            $regionCollectionTransfer->addRegion(
+                $this->mapRegionEntityToRegionTransfer($regionEntity, new RegionTransfer()),
+            );
+        }
+
+        return $regionCollectionTransfer;
     }
 
     /**

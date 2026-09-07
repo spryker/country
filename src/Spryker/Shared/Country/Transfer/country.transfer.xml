@@ -30,6 +30,13 @@
 
     <transfer name="Address">
         <property name="iso2Code" type="string"/>
+        <property name="region" type="string"/>
+    </transfer>
+
+    <transfer name="AddressResponse" strict="true">
+    </transfer>
+
+    <transfer name="CustomerError">
     </transfer>
 
     <transfer name="CheckoutResponse">
@@ -87,6 +94,26 @@
     <transfer name="CountryConditions" strict="true">
         <property name="iso2Codes" type="string[]" singular="iso2Code"/>
         <property name="withRegions" type="bool"/>
+    </transfer>
+
+    <transfer name="RegionCollection" strict="true">
+        <property name="regions" type="Region[]" singular="region"/>
+    </transfer>
+
+    <transfer name="RegionCriteria" strict="true">
+        <property name="regionConditions" type="RegionConditions"/>
+        <property name="sortCollection" type="Sort[]" singular="sort"/>
+        <property name="pagination" type="Pagination"/>
+    </transfer>
+
+    <transfer name="RegionConditions" strict="true">
+        <property name="iso2Codes" type="string[]" singular="iso2Code"/>
+    </transfer>
+
+    <transfer name="Sort">
+    </transfer>
+
+    <transfer name="Pagination">
     </transfer>
 
 </transfers>

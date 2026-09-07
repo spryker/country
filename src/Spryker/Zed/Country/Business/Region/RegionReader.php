@@ -7,6 +7,8 @@
 
 namespace Spryker\Zed\Country\Business\Region;
 
+use Generated\Shared\Transfer\RegionCollectionTransfer;
+use Generated\Shared\Transfer\RegionCriteriaTransfer;
 use Spryker\Zed\Country\Persistence\CountryRepositoryInterface;
 
 class RegionReader implements RegionReaderInterface
@@ -24,5 +26,10 @@ class RegionReader implements RegionReaderInterface
     public function regionExists(string $isoCode): bool
     {
         return $this->repository->getRegionsCountByIso2Code($isoCode) > 0;
+    }
+
+    public function getRegionCollection(RegionCriteriaTransfer $regionCriteriaTransfer): RegionCollectionTransfer
+    {
+        return $this->repository->getRegionCollection($regionCriteriaTransfer);
     }
 }

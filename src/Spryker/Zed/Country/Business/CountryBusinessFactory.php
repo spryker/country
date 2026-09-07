@@ -25,6 +25,8 @@ use Spryker\Zed\Country\Business\Region\RegionWriter;
 use Spryker\Zed\Country\Business\Region\RegionWriterInterface;
 use Spryker\Zed\Country\Business\Validator\CountryCheckoutDataValidator;
 use Spryker\Zed\Country\Business\Validator\CountryCheckoutDataValidatorInterface;
+use Spryker\Zed\Country\Business\Validator\CustomerAddressValidator;
+use Spryker\Zed\Country\Business\Validator\CustomerAddressValidatorInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -95,6 +97,14 @@ class CountryBusinessFactory extends AbstractBusinessFactory
         return new CountryCheckoutDataValidator(
             $this->createCountryReader(),
             $this->getRepository(),
+        );
+    }
+
+    public function createCustomerAddressValidator(): CustomerAddressValidatorInterface
+    {
+        return new CustomerAddressValidator(
+            $this->getRepository(),
+            $this->createRegionReader(),
         );
     }
 

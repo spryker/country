@@ -7,7 +7,12 @@
 
 namespace Spryker\Zed\Country\Business\Region;
 
+use Generated\Shared\Transfer\RegionCollectionTransfer;
+use Generated\Shared\Transfer\RegionCriteriaTransfer;
+
 interface RegionReaderInterface
 {
     public function regionExists(string $isoCode): bool;
+
+    public function getRegionCollection(RegionCriteriaTransfer $regionCriteriaTransfer): RegionCollectionTransfer;
 }
