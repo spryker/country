@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\Country\Persistence\Propel\Mapper;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CountryCollectionTransfer;
 use Generated\Shared\Transfer\CountryTransfer;
 use Generated\Shared\Transfer\RegionCollectionTransfer;
@@ -17,6 +18,67 @@ use Propel\Runtime\Collection\Collection;
 
 class CountryMapper
 {
+    public const string COLUMN_ID_COUNTRY = 'IdCountry';
+
+    public const string COLUMN_POSTAL_CODE_MANDATORY = 'PostalCodeMandatory';
+
+    public const string COLUMN_REGION_ID_REGION = 'RegionIdRegion';
+
+    public const string COLUMN_REGION_NAME = 'RegionName';
+
+    public const string COLUMN_REGION_ISO2_CODE = 'RegionIso2Code';
+
+    /**
+     * @param iterable<array<string, mixed>> $countryRegionRows
+     */
+    public function mapCountryRegionRowsToCountryCollectionTransfer(
+        iterable $countryRegionRows,
+        CountryCollectionTransfer $countryCollectionTransfer
+    ): CountryCollectionTransfer {
+        $countryTransfersIndexedByIdCountry = [];
+
+        foreach ($countryRegionRows as $countryRegionRow) {
+            $idCountry = $countryRegionRow[static::COLUMN_ID_COUNTRY];
+            $countryTransfersIndexedByIdCountry[$idCountry] ??= $this->mapCountryRowToCountryTransfer($countryRegionRow, new CountryTransfer());
+
+            if ($countryRegionRow[static::COLUMN_REGION_ID_REGION] === null) {
+                continue;
+            }
+
+            $countryTransfersIndexedByIdCountry[$idCountry]->addRegion(
+                $this->mapCountryRegionRowToRegionTransfer($countryRegionRow, new RegionTransfer()),
+            );
+        }
+
+        return $countryCollectionTransfer->setCountries(new ArrayObject(array_values($countryTransfersIndexedByIdCountry)));
+    }
+
+    /**
+     * @param array<string, mixed> $countryRow
+     */
+    protected function mapCountryRowToCountryTransfer(array $countryRow, CountryTransfer $countryTransfer): CountryTransfer
+    {
+        $countryTransfer->fromArray($countryRow, true);
+
+        if ($countryRow[static::COLUMN_POSTAL_CODE_MANDATORY] !== null) {
+            $countryTransfer->setPostalCodeMandatory((bool)$countryRow[static::COLUMN_POSTAL_CODE_MANDATORY]);
+        }
+
+        return $countryTransfer;
+    }
+
+    /**
+     * @param array<string, mixed> $countryRegionRow
+     */
+    protected function mapCountryRegionRowToRegionTransfer(array $countryRegionRow, RegionTransfer $regionTransfer): RegionTransfer
+    {
+        return $regionTransfer
+            ->setIdRegion($countryRegionRow[static::COLUMN_REGION_ID_REGION])
+            ->setFkCountry($countryRegionRow[static::COLUMN_ID_COUNTRY])
+            ->setName($countryRegionRow[static::COLUMN_REGION_NAME])
+            ->setIso2Code($countryRegionRow[static::COLUMN_REGION_ISO2_CODE]);
+    }
+
     /**
      * @param \Propel\Runtime\Collection\Collection<\Orm\Zed\Country\Persistence\SpyRegion> $regionEntities
      *

@@ -14,9 +14,12 @@ use Generated\Shared\Transfer\RegionCollectionTransfer;
 use Generated\Shared\Transfer\RegionCriteriaTransfer;
 use Orm\Zed\Country\Persistence\Map\SpyCountryStoreTableMap;
 use Orm\Zed\Country\Persistence\Map\SpyCountryTableMap;
+use Orm\Zed\Country\Persistence\Map\SpyRegionTableMap;
 use Orm\Zed\Country\Persistence\SpyCountryQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Spryker\Zed\Country\Persistence\Propel\Mapper\CountryMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
+use Spryker\Zed\PropelOrm\Business\Model\Formatter\OptimizedSimpleArrayFormatter;
 
 /**
  * @method \Spryker\Zed\Country\Persistence\CountryPersistenceFactory getFactory()
@@ -113,15 +116,20 @@ class CountryRepository extends AbstractRepository implements CountryRepositoryI
 
     public function getAvailableCountries(): CountryCollectionTransfer
     {
-        $countryEntities = $this->getFactory()
+        $countryRegionRows = $this->getFactory()
             ->createCountryQuery()
-            ->joinWithSpyRegion(Criteria::LEFT_JOIN)
+            ->leftJoinSpyRegion()
             ->orderByName()
+            ->select(SpyCountryTableMap::getFieldNames())
+            ->withColumn(SpyRegionTableMap::COL_ID_REGION, CountryMapper::COLUMN_REGION_ID_REGION)
+            ->withColumn(SpyRegionTableMap::COL_NAME, CountryMapper::COLUMN_REGION_NAME)
+            ->withColumn(SpyRegionTableMap::COL_ISO2_CODE, CountryMapper::COLUMN_REGION_ISO2_CODE)
+            ->setFormatter(new OptimizedSimpleArrayFormatter())
             ->find();
 
         return $this->getFactory()
             ->createCountryMapper()
-            ->mapCountryTransferCollection($countryEntities, new CountryCollectionTransfer());
+            ->mapCountryRegionRowsToCountryCollectionTransfer($countryRegionRows, new CountryCollectionTransfer());
     }
 
     public function findCountryByName(string $countryName): ?CountryTransfer
